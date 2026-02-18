@@ -45,6 +45,17 @@ HTML_FORM = """
 </head>
 <body>
   <div class="card">
+    <div style="margin-bottom: 1rem;">
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100" width="72" height="72">
+        <rect x="12" y="18" width="44" height="58" rx="2" fill="#d8d8d8" stroke="#222" stroke-width="2"/>
+        <rect x="18" y="12" width="44" height="58" rx="2" fill="#ededed" stroke="#222" stroke-width="2"/>
+        <g transform="rotate(-4,66,56)">
+          <rect x="42" y="30" width="44" height="58" rx="2" fill="#fff" stroke="#222" stroke-width="2.5"/>
+          <polyline points="50,64 56,54 60,60 66,50 72,64" fill="none" stroke="#222" stroke-width="1.5" stroke-linejoin="round" stroke-linecap="round"/>
+          <circle cx="54" cy="46" r="3.5" fill="none" stroke="#222" stroke-width="1.5"/>
+        </g>
+      </svg>
+    </div>
     <h1>PDF Image Extractor</h1>
     <p>Upload a PDF to extract embedded images and vector graphics.</p>
     <form action="/extract" method="post" enctype="multipart/form-data">
