@@ -4,3 +4,5 @@ __pycache__/
 *_images/
 .DS_Store
 pdf-input/
+.playwright-mcp/
+.context/
