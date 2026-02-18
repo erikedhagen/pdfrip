@@ -17,7 +17,7 @@ HTML_FORM = """
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>PDF Image Extractor</title>
+  <title>PDFRip</title>
   <style>
     * { box-sizing: border-box; margin: 0; padding: 0; }
     body { font-family: system-ui, sans-serif; background: #f5f5f5; display: flex;
@@ -56,8 +56,8 @@ HTML_FORM = """
         </g>
       </svg>
     </div>
-    <h1>PDF Image Extractor</h1>
-    <p>Upload a PDF to extract embedded images and vector graphics.</p>
+    <h1>PDFRip</h1>
+    <p>Rip embedded images and vector graphics from any PDF.</p>
     <form action="/extract" method="post" enctype="multipart/form-data">
       <label class="upload-label">
         <span id="label-text">Click to select a PDF</span>

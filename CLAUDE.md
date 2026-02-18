@@ -1,6 +1,6 @@
-# PDF Image Extractor
+# PDFRip
 
-PDF extraction tool that pulls embedded raster images, vector graphics, and separated vector/text layers from PDF files. Available as a web app and CLI.
+Rip embedded raster images, vector graphics, and separated vector/text layers from PDF files. Available as a web app and CLI.
 
 ## Tech Stack
 
