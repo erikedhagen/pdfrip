@@ -41,7 +41,7 @@ HTML_FORM = """
   <meta name="twitter:title" content="PDFPeel — Extract Images & Vectors from PDF">
   <meta name="twitter:description" content="Extract embedded images and vector graphics from any PDF. Free, instant, and private.">
   <meta name="twitter:image" content="https://pdfpeel.com/static/og-image.png">
-  <script defer data-domain="pdfpeel.com" src="https://plausible.io/js/script.js"></script>
+  {analytics_tag}
   <style>
     * { box-sizing: border-box; margin: 0; padding: 0; }
     body { font-family: system-ui, sans-serif; background: #f5f5f5; display: flex;
@@ -139,9 +139,17 @@ HTML_FORM = """
 """
 
 
+UMAMI_HOST = os.environ.get("UMAMI_HOST", "")
+UMAMI_WEBSITE_ID = os.environ.get("UMAMI_WEBSITE_ID", "")
+
+
 @app.get("/", response_class=HTMLResponse)
 async def index():
-    return HTML_FORM
+    if UMAMI_HOST and UMAMI_WEBSITE_ID:
+        tag = f'<script defer src="https://{UMAMI_HOST}/script.js" data-website-id="{UMAMI_WEBSITE_ID}"></script>'
+    else:
+        tag = ""
+    return HTML_FORM.format(analytics_tag=tag)
 
 
 @app.get("/sitemap.xml")

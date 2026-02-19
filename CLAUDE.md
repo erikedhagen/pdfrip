@@ -32,6 +32,16 @@ Production: `uvicorn main:app --host 0.0.0.0 --port 8000` (see Procfile)
 - Renders at 200 DPI by default. Skips regions < 5x5px and full-page backgrounds.
 - Unicode filenames use RFC 5987 encoding with ASCII fallback.
 
+## Environment Variables
+
+| Variable | Purpose | Required |
+|---|---|---|
+| `UMAMI_HOST` | Umami analytics hostname (e.g. `analytics.example.com`) | No — analytics disabled when unset |
+| `UMAMI_WEBSITE_ID` | Umami website ID | No — analytics disabled when unset |
+| `GLITCHTIP_DSN` | GlitchTip/Sentry DSN for error monitoring | No — monitoring disabled when unset |
+
+Set these on your hosting platform (e.g. Railway Variables). No analytics or error monitoring runs locally unless you set them.
+
 ## Conventions
 
 - Use `uv` for all dependency management (not pip)
