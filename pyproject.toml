@@ -3,8 +3,10 @@ name = "pdfpeel"
 version = "0.1.0"
 requires-python = ">=3.10"
 dependencies = [
+    "aiofiles",
     "fastapi",
     "uvicorn",
     "pymupdf",
     "python-multipart",
+    "sentry-sdk[fastapi]",
 ]
