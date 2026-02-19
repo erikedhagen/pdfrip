@@ -6,10 +6,12 @@ from urllib.parse import quote
 import fitz  # pymupdf
 from fastapi import FastAPI, File, Form, UploadFile
 from fastapi.responses import HTMLResponse, PlainTextResponse, StreamingResponse
+from fastapi.staticfiles import StaticFiles
 
 from pdf_extract import extract_all
 
 app = FastAPI()
+app.mount("/static", StaticFiles(directory="static"), name="static")
 
 HTML_FORM = """
 <!DOCTYPE html>
