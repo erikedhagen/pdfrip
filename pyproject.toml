@@ -8,4 +8,5 @@ dependencies = [
     "uvicorn",
     "pymupdf",
     "python-multipart",
+    "sentry-sdk[fastapi]",
 ]

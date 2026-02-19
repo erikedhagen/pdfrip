@@ -1,14 +1,22 @@
 import io
+import os
 import zipfile
 from pathlib import Path
 from urllib.parse import quote
 
+import sentry_sdk
 import fitz  # pymupdf
 from fastapi import FastAPI, File, Form, UploadFile
 from fastapi.responses import HTMLResponse, PlainTextResponse, StreamingResponse
 from fastapi.staticfiles import StaticFiles
 
 from pdf_extract import extract_all
+
+sentry_sdk.init(
+    dsn=os.environ.get("GLITCHTIP_DSN", ""),
+    traces_sample_rate=0.1,
+    send_default_pii=False,
+)
 
 app = FastAPI()
 app.mount("/static", StaticFiles(directory="static"), name="static")
