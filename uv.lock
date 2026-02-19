@@ -102,7 +102,7 @@ wheels = [
 ]
 
 [[package]]
-name = "pdf-image-extractor"
+name = "pdfpeel"
 version = "0.1.0"
 source = { virtual = "." }
 dependencies = [

@@ -17,7 +17,7 @@ HTML_FORM = """
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>PDFRip</title>
+  <title>PDFPeel</title>
   <style>
     * { box-sizing: border-box; margin: 0; padding: 0; }
     body { font-family: system-ui, sans-serif; background: #f5f5f5; display: flex;
@@ -37,7 +37,7 @@ HTML_FORM = """
     .mode-group label { display: flex; align-items: center; gap: 0.5rem;
                         font-size: 0.9rem; color: #333; padding: 0.4rem 0; cursor: pointer; }
     .mode-group input[type="radio"] { display: inline; accent-color: #111; }
-    .hint { font-size: 0.75rem; color: #999; margin-left: 1.5rem; }
+    .hint { font-size: 0.75rem; color: #999; margin-left: 1.375rem; }
     button { background: #111; color: #fff; border: none; border-radius: 8px;
              padding: 0.75rem 2rem; font-size: 1rem; cursor: pointer; width: 100%; }
     button:hover { background: #333; }
@@ -45,8 +45,8 @@ HTML_FORM = """
 </head>
 <body>
   <div class="card">
-    <div style="margin-bottom: 1rem;">
-      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100" width="72" height="72">
+    <div style="margin-bottom: 0.25rem;">
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="8 8 82 82" width="72" height="72">
         <rect x="12" y="18" width="44" height="58" rx="2" fill="#d8d8d8" stroke="#222" stroke-width="2"/>
         <rect x="18" y="12" width="44" height="58" rx="2" fill="#ededed" stroke="#222" stroke-width="2"/>
         <g transform="rotate(-4,66,56)">
@@ -56,8 +56,8 @@ HTML_FORM = """
         </g>
       </svg>
     </div>
-    <h1>PDFRip</h1>
-    <p>Rip embedded images and vector graphics from any PDF.</p>
+    <h1 style="font-size: 1.4rem; margin-bottom: 1.25rem; letter-spacing: 0.01em;"><span style="font-weight: 700;">PDF</span><span style="font-weight: 400; color: #444;">Peel</span></h1>
+    <p>Extract embedded images and vector graphics from any PDF.</p>
     <form action="/extract" method="post" enctype="multipart/form-data">
       <label class="upload-label">
         <span id="label-text">Click to select a PDF</span>
@@ -75,7 +75,41 @@ HTML_FORM = """
       </div>
       <button type="submit">Extract</button>
     </form>
+    <p style="margin-top: 1rem; font-size: 0.78rem; color: #333; display: inline-flex; align-items: center; gap: 4px;">
+      <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#4a9" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" style="flex-shrink: 0;"><path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"/><polyline points="22 4 12 14.01 9 11.01"/></svg>
+      Your files stay private. <a href="#" id="privacy-link" style="color: #333; text-decoration: underline;">Learn more</a>
+    </p>
   </div>
+  <a href="https://digiswede.com" target="_blank" rel="noopener" style="position: fixed; bottom: 1rem; right: 1rem; font-family: system-ui, sans-serif; font-size: 0.72rem; color: #999; text-decoration: none;">Built by Digiswede</a>
+
+  <div id="privacy-modal" style="display:none; position:fixed; inset:0; background:rgba(0,0,0,0.4);
+       z-index:10; justify-content:center; align-items:center;">
+    <div style="background:#fff; border-radius:12px; padding:2rem; max-width:420px; width:90%;
+         box-shadow:0 4px 24px rgba(0,0,0,0.15); position:relative;">
+      <button id="privacy-close" style="position:absolute; top:0.75rem; right:0.75rem; background:none;
+              border:none; font-size:1.2rem; cursor:pointer; color:#999; width:auto; padding:0.25rem;">&#x2715;</button>
+      <h2 style="font-size:1.1rem; margin-bottom:1rem;">How your data is handled</h2>
+      <ul style="text-align:left; font-size:0.85rem; color:#444; line-height:1.6; padding-left:1.2rem;">
+        <li>Your PDF is processed <strong>in server memory only</strong> and never written to disk.</li>
+        <li>No files or data are retained after processing completes.</li>
+        <li>The server runs within the <strong>European Union</strong>.</li>
+      </ul>
+    </div>
+  </div>
+
+  <script>
+    const modal = document.getElementById('privacy-modal');
+    document.getElementById('privacy-link').addEventListener('click', function(e) {
+      e.preventDefault();
+      modal.style.display = 'flex';
+    });
+    document.getElementById('privacy-close').addEventListener('click', function() {
+      modal.style.display = 'none';
+    });
+    modal.addEventListener('click', function(e) {
+      if (e.target === modal) modal.style.display = 'none';
+    });
+  </script>
 </body>
 </html>
 """
