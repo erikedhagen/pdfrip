@@ -5,7 +5,7 @@ from urllib.parse import quote
 
 import fitz  # pymupdf
 from fastapi import FastAPI, File, Form, UploadFile
-from fastapi.responses import HTMLResponse, StreamingResponse
+from fastapi.responses import HTMLResponse, PlainTextResponse, StreamingResponse
 
 from pdf_extract import extract_all
 
@@ -17,7 +17,20 @@ HTML_FORM = """
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>PDFPeel</title>
+  <title>PDFPeel — Extract Images & Vectors from PDF</title>
+  <meta name="description" content="Extract embedded images and vector graphics from any PDF. Free, instant, and private — your files never touch our disk.">
+  <link rel="canonical" href="https://pdfpeel.com/">
+  <meta property="og:type" content="website">
+  <meta property="og:url" content="https://pdfpeel.com/">
+  <meta property="og:title" content="PDFPeel — Extract Images & Vectors from PDF">
+  <meta property="og:description" content="Extract embedded images and vector graphics from any PDF. Free, instant, and private.">
+  <meta property="og:image" content="https://pdfpeel.com/static/og-image.png">
+  <meta property="og:image:width" content="1200">
+  <meta property="og:image:height" content="630">
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:title" content="PDFPeel — Extract Images & Vectors from PDF">
+  <meta name="twitter:description" content="Extract embedded images and vector graphics from any PDF. Free, instant, and private.">
+  <meta name="twitter:image" content="https://pdfpeel.com/static/og-image.png">
   <style>
     * { box-sizing: border-box; margin: 0; padding: 0; }
     body { font-family: system-ui, sans-serif; background: #f5f5f5; display: flex;
@@ -118,6 +131,28 @@ HTML_FORM = """
 @app.get("/", response_class=HTMLResponse)
 async def index():
     return HTML_FORM
+
+
+@app.get("/sitemap.xml")
+async def sitemap():
+    return PlainTextResponse(
+        '<?xml version="1.0" encoding="UTF-8"?>\n'
+        '<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">\n'
+        "  <url>\n"
+        "    <loc>https://pdfpeel.com/</loc>\n"
+        "    <changefreq>monthly</changefreq>\n"
+        "    <priority>1.0</priority>\n"
+        "  </url>\n"
+        "</urlset>",
+        media_type="application/xml",
+    )
+
+
+@app.get("/robots.txt")
+async def robots():
+    return PlainTextResponse(
+        "User-agent: *\nAllow: /\nSitemap: https://pdfpeel.com/sitemap.xml\n"
+    )
 
 
 @app.post("/extract")
