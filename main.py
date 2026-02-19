@@ -33,6 +33,7 @@ HTML_FORM = """
   <meta name="twitter:title" content="PDFPeel — Extract Images & Vectors from PDF">
   <meta name="twitter:description" content="Extract embedded images and vector graphics from any PDF. Free, instant, and private.">
   <meta name="twitter:image" content="https://pdfpeel.com/static/og-image.png">
+  <script defer data-domain="pdfpeel.com" src="https://plausible.io/js/script.js"></script>
   <style>
     * { box-sizing: border-box; margin: 0; padding: 0; }
     body { font-family: system-ui, sans-serif; background: #f5f5f5; display: flex;
