@@ -149,7 +149,7 @@ async def index():
         tag = f'<script defer src="https://{UMAMI_HOST}/script.js" data-website-id="{UMAMI_WEBSITE_ID}"></script>'
     else:
         tag = ""
-    return HTML_FORM.format(analytics_tag=tag)
+    return HTML_FORM.replace("{analytics_tag}", tag)
 
 
 @app.get("/sitemap.xml")
