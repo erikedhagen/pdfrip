@@ -1,6 +1,6 @@
-# PDFRip
+# PDFPeel
 
-Rip embedded raster images, vector graphics, and separated vector/text layers from PDF files. Available as a web app and CLI.
+Extract embedded raster images, vector graphics, and separated vector/text layers from PDF files. Available as a web app and CLI.
 
 ## Tech Stack
 
