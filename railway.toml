@@ -1,8 +1,8 @@
 [build]
-builder = "nixpacks"
-nixpacksConfigPath = "nixpacks.toml"
+builder = "RAILPACK"
 
 [deploy]
+startCommand = "uvicorn main:app --host 0.0.0.0 --port $PORT"
 healthcheckPath = "/"
 restartPolicyType = "on_failure"
 restartPolicyMaxRetries = 3
