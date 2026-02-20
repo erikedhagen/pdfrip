@@ -41,6 +41,9 @@ HTML_FORM = """
   <meta name="twitter:title" content="PDFPeel — Extract Images & Vectors from PDF">
   <meta name="twitter:description" content="Extract embedded images and vector graphics from any PDF. Free, instant, and private.">
   <meta name="twitter:image" content="https://pdfpeel.com/static/og-image.png">
+  <link rel="icon" type="image/svg+xml" href="/static/favicon.svg">
+  <link rel="icon" type="image/png" href="/static/favicon.png">
+  <link rel="apple-touch-icon" href="/static/apple-touch-icon.png">
   {analytics_tag}
   <style>
     * { box-sizing: border-box; margin: 0; padding: 0; }
